@@ -1,0 +1,2 @@
+# The vendored tarballs must keep their bytes: their sha512 is checked on install.
+*.tgz binary
