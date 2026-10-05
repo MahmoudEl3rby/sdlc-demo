@@ -16,3 +16,10 @@ export function listProducts() {
 export function productById(id) {
   return PRODUCTS.find((product) => product.id === id);
 }
+
+/** The products whose names hold the text, in any letter case (the change request). */
+export function searchProducts(text) {
+  const wanted = text.trim().toLowerCase();
+
+  return PRODUCTS.filter((product) => product.name.toLowerCase().includes(wanted));
+}

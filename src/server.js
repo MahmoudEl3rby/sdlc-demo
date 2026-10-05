@@ -1,9 +1,10 @@
-// The shop API: health, products, basket totals and the guest checkout, as JSON over HTTP.
-// The port comes from `--port` or the PORT variable that the preview sets.
+// The shop API: health, products with a search by name, basket totals and the guest
+// checkout, as JSON over HTTP. The port comes from `--port` or the PORT variable that the
+// preview sets.
 import { createServer } from 'node:http';
 import minimist from 'minimist';
 import { basketTotal } from './basket.js';
-import { listProducts, productById } from './catalog.js';
+import { listProducts, productById, searchProducts } from './catalog.js';
 import { guestCheckout } from './checkout.js';
 import { applyPromotion } from './promotions.js';
 
@@ -52,7 +53,9 @@ async function answer(req) {
   }
 
   if (req.method === 'GET' && url.pathname === '/api/products') {
-    return { status: 200, value: listProducts() };
+    const search = url.searchParams.get('search');
+
+    return { status: 200, value: search === null ? listProducts() : searchProducts(search) };
   }
 
   if (req.method === 'GET' && productPath !== null) {

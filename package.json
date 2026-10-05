@@ -1,8 +1,8 @@
 {
   "name": "sdlc-demo-shop",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Small online shop API with a basket and guest checkout, Prototype 1",
+  "description": "Small online shop API with a basket and guest checkout, Prototype 2",
   "type": "module",
   "main": "dist/server.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "start": "node dist/server.js"
   },
   "dependencies": {
-    "minimist": "file:vendor/minimist-1.2.5.tgz"
+    "minimist": "file:vendor/minimist-1.2.8.tgz"
   },
   "license": "MIT"
 }

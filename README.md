@@ -21,9 +21,18 @@ npm start
 | --- | --- |
 | `GET /health` | `{ "status": "ok" }` |
 | `GET /api/products` | Every product, with `id`, `name` and `price` |
+| `GET /api/products?search=<text>` | The products whose names hold the text, in any letter case (the change request) |
 | `GET /api/products/<id>` | One product, or 404 |
 | `POST /api/basket/total` | The total of `items` (each with `price` and an optional `qty`) after `promotionCode`; 400 when `items` is not a list |
 | `POST /api/checkout` | A guest order from `email`, `items` (each with `productId` and an optional `qty`) and an optional `promotionCode`: 201 with the order, 400 when the email or the basket is not valid |
+
+## Changes in Prototype 2
+
+- Product search by a part of the name (the change request).
+- Discounts are rounded to whole cents.
+- Promotions take a fixed percentage instead of a formula that was evaluated as code.
+- The payment request keeps TLS certificate verification on.
+- minimist is upgraded from 1.2.5 to 1.2.8, which fixes CVE-2021-44906.
 
 ## Known limitations
 

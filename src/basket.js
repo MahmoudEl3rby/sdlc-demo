@@ -9,11 +9,11 @@ export function basketTotal(items) {
   return items.reduce((sum, item) => sum + item.price * (item.qty ?? 1), 0);
 }
 
-/** The total with a percentage taken off. */
+/** The total with a percentage taken off, rounded to whole cents. */
 export function applyDiscount(total, percent) {
   if (percent < 0 || percent > 100) {
     throw new RangeError('percent out of range');
   }
 
-  return total - (total * percent) / 100;
+  return Math.round((total - (total * percent) / 100) * 100) / 100;
 }

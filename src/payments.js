@@ -10,8 +10,6 @@ export function paymentRequest(amount) {
       path: '/v1/charges',
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      // The provider's test host signs its own certificate.
-      rejectUnauthorized: false,
     },
     body: JSON.stringify({ amount: Math.round(amount * 100), currency: 'EUR' }),
   };

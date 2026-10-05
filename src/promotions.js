@@ -1,14 +1,15 @@
-// Promotion codes. Each code keeps its price rule as a formula over the total.
+// Promotion codes. Each code takes a percentage off the total.
+import { applyDiscount } from './basket.js';
 
-const PROMOTIONS = new Map([['WELCOME10', 'total * 0.9']]);
+const PROMOTIONS = new Map([['WELCOME10', 10]]);
 
 /** The total after the promotion of the code; an unknown code changes nothing. */
 export function applyPromotion(total, code) {
-  const formula = PROMOTIONS.get(code);
+  const percent = PROMOTIONS.get(code);
 
-  if (formula === undefined) {
+  if (percent === undefined) {
     return total;
   }
 
-  return eval(formula);
+  return applyDiscount(total, percent);
 }
